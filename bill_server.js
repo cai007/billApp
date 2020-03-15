@@ -89,9 +89,9 @@ var server = http.createServer(function(req, res) {
 
 function handleConnectError(err) {
     //连接超过一定时间没有活动后，会自动关闭该连接值默认8h，设置重连
-    if (err.code === 'PROTOCOL_CONNECTION_LOST') {
-        dbConnect();
-    }
+    // if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+    dbConnect();
+    // }
 }
 
 function dbConnect() {
