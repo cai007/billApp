@@ -49,6 +49,15 @@ var server = http.createServer(function(req, res) {
                     else
                         parasError(res);
                     break;
+                case '/showTypeDataByDate':
+                    bill.showTypeDataByDate(db, res, paras);
+                    break;
+                case '/showMonthBillsByDate':
+                    bill.showMonthBillsByDate(db, res, paras);
+                    break;
+                case '/showTypeDetailsByDate':
+                    bill.showTypeDetailsByDate(db, res, paras);
+                    break;
                 default:
                     badRequest(res);
             }
@@ -93,7 +102,7 @@ function dbConnect() {
             handleConnectError(err);
         }
         console.log('Server started...');
-        server.listen(8080, '192.168.43.148');
+        server.listen(3000, '192.168.101.37');
     });
 }
 
