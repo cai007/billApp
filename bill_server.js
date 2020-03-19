@@ -102,7 +102,7 @@ function dbConnect() {
             handleConnectError(err);
         }
         console.log('Server started...');
-        server.listen(3000, '192.168.101.37');
+        server.listen(3000, '0.0.0.0');
     });
 }
 
