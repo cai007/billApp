@@ -87,7 +87,10 @@ function askUrl(server, db) {
 function handleConnectError(err) {
     //连接超过一定时间没有活动后，会自动关闭该连接值默认8h，设置重连
     // if (err.code === 'PROTOCOL_CONNECTION_LOST') {
-    dbConnect();
+        setTimeOut(function(){
+            console.log('准备重启：**************************************')
+            dbConnect();
+        },3000);
     // }
 }
 
@@ -102,7 +105,7 @@ function dbConnect() {
     askUrl(server, db);
     db.connect((err, result) => {
         if (err) {
-            console.log(err)
+            console.log('here is error:',err)
                 // throw err;
             handleConnectError(err);
         }
