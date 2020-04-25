@@ -53,6 +53,9 @@ function askUrl(server, db) {
                     case '/showTypeDetailsByDate':
                         bill.showTypeDetailsByDate(db, res, paras);
                         break;
+                    case '/showUserBalance':
+                        bill.showUserBalance(db, res, paras);
+                        break;
                     default:
                         badRequest(res);
                 }
@@ -87,10 +90,10 @@ function askUrl(server, db) {
 function handleConnectError(err) {
     //连接超过一定时间没有活动后，会自动关闭该连接值默认8h，设置重连
     // if (err.code === 'PROTOCOL_CONNECTION_LOST') {
-        setTimeOut(function(){
-            console.log('准备重启：**************************************')
-            dbConnect();
-        },3000);
+    setTimeOut(function() {
+        console.log('准备重启：**************************************')
+        dbConnect();
+    }, 3000);
     // }
 }
 
@@ -105,12 +108,12 @@ function dbConnect() {
     askUrl(server, db);
     db.connect((err, result) => {
         if (err) {
-            console.log('here is error:',err)
+            console.log('here is error:', err)
                 // throw err;
             handleConnectError(err);
         }
         console.log('Server started...');
-        server.listen(3000, '0.0.0.0');
+        server.listen(3000, '127.0.0.1');
     });
 }
 
