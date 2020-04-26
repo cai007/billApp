@@ -56,6 +56,9 @@ function askUrl(server, db) {
                     case '/showUserBalance':
                         bill.showUserBalance(db, res, paras);
                         break;
+                    case '/showLastUsersBalance':
+                        bill.showLastUsersBalance(db, res, paras);
+                        break;
                     default:
                         badRequest(res);
                 }
@@ -77,6 +80,15 @@ function askUrl(server, db) {
                         break;
                     case '/deleteTypes':
                         bill.deleteTypes(db, req, res);
+                        break;
+                    case '/updateUserBalance':
+                        bill.updateUserBalance(db, req, res);
+                        break;
+                    case '/addUserBalance':
+                        bill.addUserBalance(db, req, res);
+                        break;
+                    case '/deleteUserBalance':
+                        bill.deleteUserBalance(db, req, res);
                         break;
                 }
                 break;
@@ -113,7 +125,7 @@ function dbConnect() {
             handleConnectError(err);
         }
         console.log('Server started...');
-        server.listen(3000, '127.0.0.1');
+        server.listen(3000, '192.168.101.37');
     });
 }
 
